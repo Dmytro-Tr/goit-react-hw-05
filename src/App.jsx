@@ -3,7 +3,8 @@ import "./App.css";
 import HomePage from "./pages/HomePage";
 import MoviesPage from "./pages/MoviesPage";
 import NotFoundPage from "./pages/NotFoundPage";
-import Navigation from "./components/Header/Navigation";
+import Navigation from "./components/Navigation/Navigation";
+import MovieDetailsPage from "./pages/MovieDetailsPage";
 
 function App() {
   return (
@@ -15,8 +16,12 @@ function App() {
           element={<HomePage />}
         />
         <Route
-          path="/about"
+          path="/movies"
           element={<MoviesPage />}
+        />
+        <Route
+          path="/movies/:movieId"
+          element={<MovieDetailsPage />}
         />
         <Route
           path="*"
