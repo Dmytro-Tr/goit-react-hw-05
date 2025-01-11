@@ -25,8 +25,16 @@ export const getMovies = async () => {
 };
 
 export const getMovieById = async (movieId) => {
-  const data = await axios.get(
+  const { data } = await axios.get(
     `https://api.themoviedb.org/3/movie/${movieId}?language=en-US`,
+    options
+  );
+  return data;
+};
+
+export const getCredits = async () => {
+  const { data } = await axios.get(
+    `https://api.themoviedb.org/3/movie/${movieId}/credits?language=en-US`,
     options
   );
   return data;
