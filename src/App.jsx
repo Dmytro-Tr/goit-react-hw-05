@@ -5,6 +5,8 @@ import MoviesPage from "./pages/MoviesPage";
 import NotFoundPage from "./pages/NotFoundPage";
 import Navigation from "./components/Navigation/Navigation";
 import MovieDetailsPage from "./pages/MovieDetailsPage";
+import MovieCast from "./components/MovieCast/MovieCast";
+import MovieReviews from "./components/MovieReviews/MovieReviews";
 
 function App() {
   return (
@@ -22,7 +24,16 @@ function App() {
         <Route
           path="/movies/:movieId"
           element={<MovieDetailsPage />}
-        />
+        >
+          <Route
+            path="cast"
+            element={<MovieCast />}
+          />
+          <Route
+            path="reviews"
+            element={<MovieReviews />}
+          />
+        </Route>
         <Route
           path="*"
           element={<NotFoundPage />}

@@ -1,15 +1,17 @@
 import { useEffect, useState } from "react";
-import { NavLink, Outlet, useParams } from "react-router-dom";
+import { Link, Outlet, useParams } from "react-router-dom";
 import { getMovieById } from "../api";
 
 const MovieDetailsPage = () => {
   const { movieId } = useParams();
-  console.log(`movieId: ${movieId}`);
+  // console.log(`movieId: ${movieId}`);
   const [movieById, setMovieById] = useState(null);
+
+  // console.log(`movieById:${movieById}`);
 
   useEffect(() => {
     const getData = async () => {
-      const data = await getMovieById(movieId);
+      const { data } = await getMovieById(movieId);
       setMovieById(data);
     };
     getData();
@@ -19,16 +21,24 @@ const MovieDetailsPage = () => {
     return <h2>Loading..</h2>;
   }
 
-  // console.log(`Search poster: ${movieById.poster_path}`);
-
   return (
     <div>
-      <h2>MovieDetailsPage</h2>
-      <img src={`https://image.tmdb.org/t/p/w500/${movieById.poster_path}`} />
-      <h3> lalala</h3>
+      <img src={`https://image.tmdb.org/t/p/w300/${movieById.poster_path}`} />
+      <h2>{movieById.title}</h2>
+      <p>User Score: {movieById.popularity}%</p>
+      <h3>Overview</h3>
+      <p>{movieById.overview}</p>
+      <h4>Genres</h4>
+      <p>{movieById.genres.name}</p>
       <nav>
-        <NavLink to="cast">MovieCast</NavLink>
-        <NavLink to="reviews">MovieReviews</NavLink>
+        <ul>
+          <li>
+            <Link to="cast">MovieCast</Link>
+          </li>
+          <li>
+            <Link to="reviews">MovieReviews</Link>
+          </li>
+        </ul>
       </nav>
       <Outlet />
     </div>

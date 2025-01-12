@@ -9,13 +9,9 @@ const MovieList = ({ movies }) => {
           <li key={item.id}>
             <Link
               to={`/movies/${item.id}`}
-              // to={`/movie/${item.id.toString()}`}
               className={s.link}
             >
               {item.title}
-              {/* <img
-                src={`https://image.tmdb.org/t/p/w500/${item.poster_path}`}
-              ></img> */}
             </Link>
           </li>
         ))}
