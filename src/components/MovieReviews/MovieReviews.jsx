@@ -6,7 +6,7 @@ const MovieReviews = () => {
   const { movieId } = useParams();
 
   const [movieReviews, setMovieReviews] = useState([]);
-  console.log(`reviews: ${movieReviews}`);
+  // console.log(`reviews: ${movieReviews}`);
 
   useEffect(() => {
     const getData = async () => {

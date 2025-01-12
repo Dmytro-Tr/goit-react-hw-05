@@ -1,7 +1,9 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import s from "./movieList.module.css";
 
 const MovieList = ({ movies }) => {
+  const location = useLocation();
+
   return (
     <div className={s.movies_list}>
       <ul className={s.list}>
@@ -10,6 +12,7 @@ const MovieList = ({ movies }) => {
             <Link
               to={`/movies/${item.id}`}
               className={s.link}
+              state={location}
             >
               {item.title}
             </Link>
