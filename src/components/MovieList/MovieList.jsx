@@ -7,10 +7,10 @@ const MovieList = ({ movies }) => {
   return (
     <div className={s.movies_list}>
       <ul className={s.list}>
-        {movies.map((item) => (
+        {movies.map((item, index) => (
           <li key={item.id}>
             <Link
-              to={`/movies/${item.id}`}
+              to={`/movies/${item.id}-${index}`}
               className={s.link}
               state={location}
             >

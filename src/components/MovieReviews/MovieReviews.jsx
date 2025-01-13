@@ -9,11 +9,16 @@ const MovieReviews = () => {
   // console.log(`reviews: ${movieReviews}`);
 
   useEffect(() => {
-    const getData = async () => {
-      const review = await getReviews(movieId);
-      setMovieReviews(review);
-    };
-    getData();
+    try {
+      if (!movieId) return;
+      const getData = async () => {
+        const review = await getReviews(movieId);
+        setMovieReviews(review);
+      };
+      getData();
+    } catch (error) {
+      console.log(error);
+    }
   }, [movieId]);
 
   return (

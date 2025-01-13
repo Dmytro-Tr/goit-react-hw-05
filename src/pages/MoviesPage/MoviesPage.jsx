@@ -34,19 +34,23 @@ const MoviesPage = () => {
   );
 
   useEffect(() => {
-    const getData = async () => {
-      if (!query) {
-        return;
-      }
-      const data = await getSearchMovie(query);
+    try {
+      const getData = async () => {
+        if (!query) {
+          return;
+        }
+        const data = await getSearchMovie(query);
 
-      if (data.length === 0) {
-        setSearchParams([]);
-        return;
-      }
-      setMovies(data);
-    };
-    getData();
+        if (data.length === 0) {
+          setSearchParams([]);
+          return;
+        }
+        setMovies(data);
+      };
+      getData();
+    } catch (error) {
+      console.log(error);
+    }
   }, [setSearchParams, query]);
 
   return (
