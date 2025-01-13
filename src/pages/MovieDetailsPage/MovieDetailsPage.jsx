@@ -47,11 +47,18 @@ const MovieDetailsPage = () => {
         <img src={`https://image.tmdb.org/t/p/w300/${movieById.poster_path}`} />
         <div className={s.textBox}>
           <h2>{movieById.title}</h2>
-          <p>User Score: {movieById.popularity}%</p>
+          <p>
+            User Score:{" "}
+            {movieById.popularity ? Math.round(movieById.popularity) : "N/A"}%
+          </p>
           <h3>Overview:</h3>
           <p>{movieById.overview}</p>
           <h4>Genres:</h4>
-          <p>{movieById.genres.name}</p>
+          <p>
+            {movieById.genres && movieById.genres.length > 0
+              ? movieById.genres.map((genre) => genre.name).join(", ")
+              : "No genres available"}
+          </p>
         </div>
       </div>{" "}
       <nav>
